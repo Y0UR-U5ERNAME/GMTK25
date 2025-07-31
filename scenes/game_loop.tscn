@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dulikfasmep0f"]
+
+[ext_resource type="Script" uid="uid://bsgexngc0o20f" path="res://scripts/game_loop.gd" id="1_e1wa2"]
+[ext_resource type="Texture2D" uid="uid://bte3w4njfiala" path="res://graphics/background.png" id="1_qco2a"]
+[ext_resource type="Texture2D" uid="uid://duphw52d10pg3" path="res://graphics/playbutton.png" id="3_g34oh"]
+[ext_resource type="Script" uid="uid://dpe72hg3l4dw8" path="res://scripts/button.gd" id="4_17ir4"]
+[ext_resource type="Texture2D" uid="uid://bnkpjyi018y30" path="res://graphics/conveyor.png" id="5_17ir4"]
+
+[node name="Game Loop" type="Node2D"]
+script = ExtResource("1_e1wa2")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(128, 96)
+texture = ExtResource("1_qco2a")
+
+[node name="Conveyor" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(128, 110)
+texture = ExtResource("5_17ir4")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 80)
+
+[node name="Pieces" type="Node2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="UI" type="Node" parent="."]
+
+[node name="OKButton" type="Sprite2D" parent="UI"]
+position = Vector2(160, 180)
+texture = ExtResource("3_g34oh")
+script = ExtResource("4_17ir4")
+metadata/_custom_type_script = "uid://dpe72hg3l4dw8"
+
+[node name="FaultyButton" type="Sprite2D" parent="UI"]
+position = Vector2(224, 180)
+texture = ExtResource("3_g34oh")
+script = ExtResource("4_17ir4")
+metadata/_custom_type_script = "uid://dpe72hg3l4dw8"

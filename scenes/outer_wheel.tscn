@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://f5q7f7cx281k"]
+
+[ext_resource type="Script" uid="uid://cixlmujpey33i" path="res://scripts/piece.gd" id="1_5m0lq"]
+[ext_resource type="Texture2D" uid="uid://cthyhxwswl01p" path="res://graphics/outerwheel.png" id="2_jmpo1"]
+[ext_resource type="Texture2D" uid="uid://cli614i6f2jew" path="res://graphics/outerwheel_o.png" id="3_jmpo1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vc126"]
+
+[node name="OuterWheel" type="Area2D"]
+show_behind_parent = true
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_5m0lq")
+metadata/_custom_type_script = "uid://cixlmujpey33i"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jmpo1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vc126")
+
+[node name="Outline" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_jmpo1")

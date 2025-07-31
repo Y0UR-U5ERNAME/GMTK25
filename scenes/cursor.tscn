@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ph8ka7qfhr8x"]
+
+[ext_resource type="Texture2D" uid="uid://cs6at1t3dykx1" path="res://graphics/hand.png" id="1_1eco6"]
+[ext_resource type="Script" uid="uid://d13rtpwcr5cbp" path="res://scripts/cursor.gd" id="1_s0nli"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndevg"]
+
+[node name="Cursor" type="Area2D"]
+z_index = 4096
+z_as_relative = false
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_s0nli")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 5)
+texture = ExtResource("1_1eco6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ndevg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

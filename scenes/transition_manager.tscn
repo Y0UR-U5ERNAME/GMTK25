@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc2bjdevnfmsw"]
+
+[ext_resource type="Script" uid="uid://dd5bbstomljk6" path="res://scripts/transition_manager.gd" id="1_r678f"]
+[ext_resource type="Shader" uid="uid://dlw7vx88r4mqs" path="res://transition_manager.gdshader" id="2_fb2dq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v31qu"]
+shader = ExtResource("2_fb2dq")
+shader_parameter/size = 50.0
+shader_parameter/pos = Vector2(128, 96)
+shader_parameter/mode = 1
+
+[node name="TransitionManager" type="CanvasLayer"]
+process_mode = 3
+layer = 100
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_r678f")
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+material = SubResource("ShaderMaterial_v31qu")
+offset_right = 256.0
+offset_bottom = 192.0
+color = Color(0.207843, 0.207843, 0.27451, 1)

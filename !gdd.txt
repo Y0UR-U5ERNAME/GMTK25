@@ -1,0 +1,49 @@
+IDEAS
+- player has to replay the same level over and over again but changes slightly each time
+- player has to act like the enemies and move in the same path to not be spotted, in a loop
+- player has to complete the loop (circuits/code?)
+- make enemies go in a loop by changing their code
+- player has to find a loop and break it
+- player has to replay over and over until nails down the things that happen each time
+- roguelike but ...
+- player can reset to point in time to get upgrades
+- not allowed to repeat yourself
+- everything repeats except one difference player has to spot
+- player has to repeat self as closely as possible
+- player returns to same room over and over until finds way to break loop
+- replay same level until something happens
+- simon says but have to choose own loop and cant repeat self
+- pokemon ranger? make loops around things to capture
+- player makes time loop between two points in time
+- piano playing? while having to play two hands looping the same notes in different times, syncing loops
+- manually controlling a clock (two hands)
+- planet orbits (prevent/make two planets crash into each other)
+- player has to continue doing same actions (job) while trying to do something else (playing game?), has to keep playing game to keep up energy to do job. money from job can be used on upgrades that help do job/play game better. work until get promotion and job can change. boss comes to check on certain levels. there might be slight hiccups during job (light goes out?). products made by player in previous level reappear in later levels?
+- player replays but has to copy previous playthrough's path as closely as possible. 
+
+CHOSEN IDEA
+- player has to continue doing same actions (job) while trying to do something else (playing game?)
+- has to keep playing game to keep up energy to do job. money from job can be used on upgrades that help do job/play game better
+- work until get promotion and job can change
+- boss comes to check on certain levels
+- there might be slight hiccups during job (e.g. light goes out)
+- products made by player in previous level reappear in later levels?
+
+- toy making factory - have to put parts in right place
+- time limit for each toy, paid based on timeliness + accuracy
+- hands move slower when more tired
+- top ui: day#, time, money 🪙, energy ⚡, time left 🕒
+- left side: game, right side: work
+- bottom right ui: faulty button
+- will get bored of playing same game over and over
+
+- multiple endings??? (win without gaming at all???)
+
+TODO
+
+
+
+- try not puzzle/platformer or level based (way to skip level)
+- make difficulty choosable?
+- strategy/diy/playerless/abstract/roguelike
+- incorporate randomness into gameplay
