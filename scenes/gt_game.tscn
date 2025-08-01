@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://kswwrnba06f0"]
+
+[ext_resource type="PackedScene" uid="uid://cwqc4ajwrt3ay" path="res://scenes/fb_player.tscn" id="1_mvmpu"]
+
+[node name="GTGame" type="Node2D"]
+
+[node name="FBPlayer" parent="." instance=ExtResource("1_mvmpu")]

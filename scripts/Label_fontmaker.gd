@@ -1,12 +1,13 @@
 @tool
 extends Label
 
-const height := 8
+@export var img : Image
+@export var height : int = 8
 
 func _ready():
 	#if not Engine.is_editor_hint(): return
 	var font := FontFile.new()
-	var img := preload("res://font-serif.png")
+	#var img := preload("res://big-font.png")
 	var fsize := Vector2i(height, 0)
 	font.set_texture_image(0, fsize, 0, img)
 	for i in range(32, 32 + 16 * 14):

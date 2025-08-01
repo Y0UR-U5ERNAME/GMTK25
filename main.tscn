@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgaekbjcj5l7r"]
+[gd_scene load_steps=6 format=3 uid="uid://cgaekbjcj5l7r"]
 
 [ext_resource type="Script" uid="uid://b6tritpinhx5r" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bte3w4njfiala" path="res://graphics/background.png" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://duphw52d10pg3" path="res://graphics/playbutton.png" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://dpe72hg3l4dw8" path="res://scripts/button.gd" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cq6v5blrru33m" path="res://icon.svg" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h2yge")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(128, 96)
+texture = ExtResource("2_lquwl")
 
 [node name="Title" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 1, 1)
@@ -23,6 +28,8 @@ texture = ExtResource("5_lquwl")
 [node name="PlayButton" type="Sprite2D" parent="."]
 position = Vector2(76, 152)
 texture = ExtResource("3_1bvp3")
+vframes = 2
+region_rect = Rect2(0, 0, 64, 24)
 script = ExtResource("3_h2yge")
 metadata/_custom_type_script = "uid://dpe72hg3l4dw8"
 

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwqc4ajwrt3ay"]
+
+[ext_resource type="Texture2D" uid="uid://cpxftrwxig3ip" path="res://graphics/icon.png" id="1_nd4wg"]
+
+[node name="FBPlayer" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nd4wg")

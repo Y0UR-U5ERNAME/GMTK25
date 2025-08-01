@@ -2,6 +2,14 @@ extends Node
 
 @onready var save_data = null
 @onready var tm = TransitionManager.get_node("Node2D")
+var day := 1
+var move_time := 2
+var work_time := 10
+var faulty_rate := 0
+var target := Piece.WHEEL
+var money := 0
+var pay := 0
+var energy := 0.7
 
 const pieces = [
 	preload("res://scenes/outer_wheel.tscn"),

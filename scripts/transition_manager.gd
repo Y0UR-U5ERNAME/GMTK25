@@ -87,7 +87,7 @@ func _process(delta):
 				if to_scene: get_tree().change_scene_to_file(to_scene)
 				else: GlobalVariables.load_save()
 
-func change_scene_to_file(scene, t=TRANSITION_OUT):
+func change_scene_to_file(scene, t=TRANSITION_CLOSE_H):
 	get_tree().paused = true
 	if t == TRANSITION_OUT:
 		position.y = -320

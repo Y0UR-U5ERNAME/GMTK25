@@ -9,9 +9,11 @@ var is_pressed := false:
 		is_pressed = x
 		if x: button_down.emit()
 		else: button_up.emit()
+		frame = int(is_pressed)
 
 func _process(_delta):
-	if Rect2(global_position - texture.get_size()*scale/2, global_position + texture.get_size()*scale/2).has_point(Cursor.global_position):
+	var r := Rect2(global_position - texture.get_size()*scale/2, texture.get_size()*scale/2)
+	if r.has_point(Cursor.global_position - Vector2(7, 7)) or r.has_point(Cursor.global_position + Vector2(7, 7)):
 		# hover
 		if not is_pressed and Input.is_action_just_pressed("left_click"):
 			is_pressed = true

@@ -35,9 +35,54 @@ CHOSEN IDEA
 - top ui: day#, time, money 🪙, energy ⚡, time left 🕒
 - left side: game, right side: work
 - bottom right ui: faulty button
-- will get bored of playing same game over and over
+- will get bored of playing same game over and over?
 
-- multiple endings??? (win without gaming at all???)
+MVP
+implement ui + console battery
+implement game console - what game?
+- geometry dash
+- frogger/crossy road
+- flappy bird
+put away/take out and switch game buttons, power button
+implement energy mechanic - work decreases energy by X (measured by holding pieces) which increases over time, game increases energy by Y which decreases over time (measured by progression in game and game input)
+lower energy will make hand move slower
+even lower makes eyes blink
+fired if energy reaches zero - fall asleep (include fired message)
+implement end of day - show pieces built, loose parts, faulty pieces found, false faulty pieces, money made
+implement shop
+- games (if have time)
+- upgrades + microtransactions
+-- energy drink - decrease energy lost from work (one time)
+-- coffee maker - decrease energy lost from work (perm, but less than energy drink)
+-- hearty breakfast - increase starting energy (one time)
+-- portable charger - increase battery life by 1 hours (perm, can be applied multiple times)
+-- decrease game diff - make bar gaps wider (perm, can be applied multiple times)
+-- flappy sticker - increase energy gained while gaming by a little
+
+JAM VERSION
+implement differences between days - use resources?
+day 1 - 2 sec move, 10 sec work, starting energy high, gets lower over days
+day 2 - 1.75 sec move, 7 sec work, introduce faulty parts
+day 3 - 1.5 sec move, 5 sec work, increased faulty rate
+day 4 - 1.25 sec move, 4 sec work, increased faulty rate, introduce outages if applicable
+day 5 - 1 sec move, 3 sec work (implement boss)
+day x - repeat but with gradually shorter work time
+implement dialogue (starting dialogue, passing dialogue), dont start day until starting dialogue over
+implement main menu
+art
+sound
+
+EXTRA
+implement more pieces
+implement outages
+
+
+DIALOGUE
+BOSS: Alright, JACK, welcome to your first day at Amir Toys Inc.!
+JACK: Right, so... how exactly does this work?
+BOSS: Eh, you'll figure it out in no time. All you'll have to do is build some toys from bits and parts!
+JACK: Well, that sounds pretty simple. How much am I getting paid again?
+BOSS: You'll be paid based on your performance. The conveyor belt will move automatically, I'll be busy
 
 TODO
 
