@@ -2,14 +2,28 @@ extends Node
 
 @onready var save_data = null
 @onready var tm = TransitionManager.get_node("Node2D")
+
+# global across days
+var money := 0
+var pay := 0
+var hi_score := 0
+var upgrades = {}
+
+var fired_message : String
+
+# per day
 var day := 1
 var move_time := 2
 var work_time := 10
 var faulty_rate := 0
 var target := Piece.WHEEL
-var money := 0
-var pay := 0
-var energy := 0.7
+var energy := 0.7:
+	set(x):
+		energy = clampf(x, 0., 1.)
+		if energy < .1 and not tm.transition:
+			tm.transition = 10
+			tm.rect.material["shader_parameter/size"] = 1
+var stats := [0, 0, 0, 0, 0, 0, 0, 0]
 
 const pieces = [
 	preload("res://scenes/outer_wheel.tscn"),

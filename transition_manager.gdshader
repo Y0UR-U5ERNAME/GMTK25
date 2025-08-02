@@ -16,5 +16,10 @@ void fragment() {
 		case 2: // open/close vertical
 			if (abs(UV.y * screen_size.y - pos.y) < size) COLOR.a = 0.;
 			break;
+		case 3: // eye
+			//if (distance(UV * screen_size, pos) < size) COLOR.a = 0.;
+			vec2 shifted = UV - vec2(.5, .5);
+			if (shifted.x*shifted.x + 1./size/size * shifted.y*shifted.y < .5) COLOR.a = 0.;
+			break;
 	}
 }

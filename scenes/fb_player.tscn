@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwqc4ajwrt3ay"]
+[gd_scene load_steps=4 format=3 uid="uid://cwqc4ajwrt3ay"]
 
-[ext_resource type="Texture2D" uid="uid://cpxftrwxig3ip" path="res://graphics/icon.png" id="1_nd4wg"]
+[ext_resource type="Script" uid="uid://dn2q5jghesd41" path="res://scripts/fb_player.gd" id="1_3b3hn"]
+[ext_resource type="Texture2D" uid="uid://hlsgypcvlugy" path="res://graphics/fbplayer.png" id="1_nd4wg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nd4wg"]
+radius = 4.12311
 
 [node name="FBPlayer" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_3b3hn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nd4wg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nd4wg")

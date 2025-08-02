@@ -17,23 +17,33 @@ static func to_time(t : float) -> String:
 
 func _ready():
 	super()
-	time = 0
+	time = 230
 	$UI/Day.text = "DAY " + str(GlobalVariables.day)
 	ui_time.text = ["MON", "TUE", "WED", "THU", "FRI"][(GlobalVariables.day - 1) % 5] + " 9:00 AM"
 	$UI/Faulty.visible = GlobalVariables.faulty_rate != 0
 	$UI/Faulty/CollisionShape2D.disabled = GlobalVariables.faulty_rate == 0
+	dialogue_finished()
+
+func dialogue_finished():
+	Cursor.speed = Vector2(256, 192).length() * 10
 
 func _process(delta: float) -> void:
 	ui_money.text = "$%d (+$%d)\nEnergy: %f" % [GlobalVariables.money, max(0, GlobalVariables.pay), GlobalVariables.energy]
 	if not is_paused:
+		if GlobalVariables.energy == 0:
+			GlobalVariables.fired_message = "Who said you could fall asleep on the job?"
+			GlobalVariables.tm.change_scene_to_file("res://scenes/fired.tscn", 11)
+		GlobalVariables.energy -= randf() * delta * 0.005
 		ui_time.text = ["MON", "TUE", "WED", "THU", "FRI"][(GlobalVariables.day - 1) % 5] + " " + to_time(time)
 		if time >= 240:
 			time = 240
 			is_paused = true
-			TransitionManager.get_node("Node2D").change_scene_to_file("res://scenes/game_loop.tscn")
+			if GlobalVariables.pay < 240. / (GlobalVariables.move_time + GlobalVariables.work_time) * Piece.piece_values[GlobalVariables.target] * .8:
+				GlobalVariables.fired_message = "Looks like you weren't working hard enough!"
+				GlobalVariables.tm.change_scene_to_file("res://scenes/fired.tscn")
+			else: GlobalVariables.tm.change_scene_to_file("res://scenes/day_end.tscn")
 			return
 		time += delta
-		if time > 240: time = 240
 		to_next_phase -= delta
 		if to_next_phase <= 0:
 			if not is_moving:

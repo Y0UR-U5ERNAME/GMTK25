@@ -5,9 +5,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v31qu"]
 shader = ExtResource("2_fb2dq")
-shader_parameter/size = 50.0
+shader_parameter/size = 0.5
 shader_parameter/pos = Vector2(128, 96)
-shader_parameter/mode = 1
+shader_parameter/mode = 3
 
 [node name="TransitionManager" type="CanvasLayer"]
 process_mode = 3

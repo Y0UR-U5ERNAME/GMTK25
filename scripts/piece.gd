@@ -66,18 +66,26 @@ func _process(delta: float) -> void:
 
 func payout():
 	if piece_type == GlobalVariables.target:
+		GlobalVariables.stats[0] += 1
+		GlobalVariables.stats[1] += piece_values[piece_type]
 		GlobalVariables.pay += piece_values[piece_type]
 	else:
+		GlobalVariables.stats[2] += 1
+		GlobalVariables.stats[3] += piece_values[piece_type]
 		GlobalVariables.pay -= piece_values[piece_type]
-	for i in get_children():
-		if i.is_class(self.get_class()): i.payout()
+		#for i in get_children():
+		#	if i.is_class(self.get_class()): i.payout()
 	queue_free()
 
 func payout_faulty():
 	if faulty:
+		GlobalVariables.stats[4] += 1
+		GlobalVariables.stats[5] += piece_values[piece_type] / 2
 		GlobalVariables.pay += piece_values[piece_type] / 2
 	else:
+		GlobalVariables.stats[6] += 1
+		GlobalVariables.stats[7] += piece_values[piece_type] / 2
 		GlobalVariables.pay -= piece_values[piece_type] / 2
-	for i in get_children():
-		if i.is_class(self.get_class()): i.payout()
+		#for i in get_children():
+		#	if i.is_class(self.get_class()): i.payout_faulty()
 	queue_free()

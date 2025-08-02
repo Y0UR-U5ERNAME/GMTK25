@@ -1,7 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://kswwrnba06f0"]
+[gd_scene load_steps=7 format=3 uid="uid://kswwrnba06f0"]
 
+[ext_resource type="Script" uid="uid://byl4vam2e5v2r" path="res://scripts/gt_game.gd" id="1_g5b8b"]
 [ext_resource type="PackedScene" uid="uid://cwqc4ajwrt3ay" path="res://scenes/fb_player.tscn" id="1_mvmpu"]
+[ext_resource type="Texture2D" uid="uid://da8dm8mbssbk0" path="res://graphics/fb_bg.png" id="2_66f1o"]
+[ext_resource type="FontFile" uid="uid://bcwqw4e8lw385" path="res://font_8.tres" id="4_i3sqc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g5b8b"]
+distance = -65.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5on74"]
+normal = Vector2(0, 1)
 
 [node name="GTGame" type="Node2D"]
+script = ExtResource("1_g5b8b")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(48, 36)
+texture = ExtResource("2_66f1o")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 72)
+
+[node name="Clouds" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(48, 16)
+texture = ExtResource("2_66f1o")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 32)
 
 [node name="FBPlayer" parent="." instance=ExtResource("1_mvmpu")]
+position = Vector2(12, 32)
+
+[node name="Pipes" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+position = Vector2(48, 68)
+texture = ExtResource("2_66f1o")
+region_enabled = true
+region_rect = Rect2(0, 64, 96, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape2D_g5b8b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape2D_5on74")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 30.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("4_i3sqc")
+theme_override_font_sizes/font_size = 8
+text = "SCORE: 0
+HI: 0"
+
+[connection signal="die" from="FBPlayer" to="." method="_on_fb_player_die"]

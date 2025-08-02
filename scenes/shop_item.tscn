@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://gwo705fs5hu4"]
+
+[ext_resource type="Texture2D" uid="uid://c6nxcej3k6h1t" path="res://graphics/shopitem.png" id="1_btjjm"]
+[ext_resource type="Script" uid="uid://bx0j7c6rbsnyo" path="res://scenes/shop_item.gd" id="2_xcw7k"]
+[ext_resource type="Texture2D" uid="uid://kh41jyhobem3" path="res://graphics/battery_icon.png" id="3_xcw7k"]
+[ext_resource type="FontFile" uid="uid://d0ucsw7i5hkmu" path="res://font_8.tres" id="4_1d7d6"]
+
+[node name="ShopItem" type="Sprite2D"]
+texture = ExtResource("1_btjjm")
+hframes = 3
+vframes = 2
+script = ExtResource("2_xcw7k")
+metadata/_custom_type_script = "uid://dpe72hg3l4dw8"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="Node2D"]
+position = Vector2(-96, -2)
+texture = ExtResource("3_xcw7k")
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_left = -82.0
+offset_top = -10.0
+offset_right = -31.0
+offset_bottom = 3.0
+theme_override_fonts/font = ExtResource("4_1d7d6")
+theme_override_font_sizes/font_size = 8
+text = "UPGRADE NAME
+Description"
+
+[node name="Label2" type="Label" parent="Node2D"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_top = -10.0
+offset_right = 104.0
+offset_bottom = 11.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_1d7d6")
+theme_override_font_sizes/font_size = 8
+text = "$999
+Refreshes daily/One-time/Upgradeable
+Not enough money/Already bought/Maxed out"
+horizontal_alignment = 2

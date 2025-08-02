@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://pgxfnmw6ne5i"]
+
+[ext_resource type="Script" uid="uid://br2ydx01jo4qi" path="res://scenes/shop.gd" id="1_xfvoa"]
+[ext_resource type="Texture2D" uid="uid://76yqyuxbcidx" path="res://graphics/shopbg.png" id="2_xfvoa"]
+[ext_resource type="FontFile" uid="uid://d0ucsw7i5hkmu" path="res://font_8.tres" id="3_1l46r"]
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_xfvoa")
+metadata/_custom_type_script = "uid://dhuq7u2kbxdpe"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(128, 96)
+texture = ExtResource("2_xfvoa")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 18.0
+offset_right = 24.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_1l46r")
+theme_override_font_sizes/font_size = 8
+text = "$999"

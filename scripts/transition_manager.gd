@@ -10,12 +10,15 @@ enum {
 	TRANSITION_OPEN_H,
 	TRANSITION_CLOSE_H,
 	TRANSITION_OPEN_V,
-	TRANSITION_CLOSE_V
+	TRANSITION_CLOSE_V,
+	TRANSITION_EYE_OPEN,
+	TRANSITION_EYE_CLOSE,
+	TRANSITION_SLEEP
 }
 var transition:
 	set(t):
 		transition = t
-		rect.material["shader_parameter/mode"] = 0 if t < TRANSITION_OPEN_H else 1 if t < TRANSITION_OPEN_V else 2
+		rect.material["shader_parameter/mode"] = 0 if t < TRANSITION_OPEN_H else 1 if t < TRANSITION_OPEN_V else 2 if t < TRANSITION_EYE_OPEN else 3
 		rect.visible = t != NO_TRANSITION
 		
 const SPEED = 700
@@ -86,6 +89,23 @@ func _process(delta):
 				transition = NO_TRANSITION
 				if to_scene: get_tree().change_scene_to_file(to_scene)
 				else: GlobalVariables.load_save()
+		TRANSITION_EYE_OPEN:
+			rect.material["shader_parameter/size"] += 1 * delta
+			if rect.material["shader_parameter/size"] >= 1:
+				rect.material["shader_parameter/size"] = 1
+				transition = NO_TRANSITION if GlobalVariables.energy >= .1 else TRANSITION_EYE_CLOSE
+		TRANSITION_EYE_CLOSE:
+			rect.material["shader_parameter/size"] -= 1 * delta
+			if rect.material["shader_parameter/size"] <= 0:
+				rect.material["shader_parameter/size"] = 0
+				transition = TRANSITION_EYE_OPEN
+		TRANSITION_SLEEP:
+			rect.material["shader_parameter/size"] -= 1 * delta
+			if rect.material["shader_parameter/size"] <= 0:
+				rect.material["shader_parameter/size"] = 0
+				transition = NO_TRANSITION
+				if to_scene: get_tree().change_scene_to_file(to_scene)
+				else: GlobalVariables.load_save()
 
 func change_scene_to_file(scene, t=TRANSITION_CLOSE_H):
 	get_tree().paused = true
@@ -102,6 +122,8 @@ func change_scene_to_file(scene, t=TRANSITION_CLOSE_H):
 	elif t == TRANSITION_CLOSE_V:
 		rect.material["shader_parameter/pos"] = Vector2(rect_size.x/2, rect_size.y)
 		rect.material["shader_parameter/size"] = rect_size.y
+		position.y = 0
+	elif t == TRANSITION_SLEEP:
 		position.y = 0
 	transition = t
 	to_scene = scene
