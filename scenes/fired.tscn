@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://17c0k7f2mto7" path="res://scripts/fired.gd" id="1_kaa82"]
 [ext_resource type="Texture2D" uid="uid://duv2bswrnil2i" path="res://graphics/endbg.png" id="2_ajfhk"]
-[ext_resource type="FontFile" uid="uid://kgqkxa5qgfxa" path="res://font_16.tres" id="3_kaa82"]
-[ext_resource type="FontFile" uid="uid://d0ucsw7i5hkmu" path="res://font_8.tres" id="4_kcci4"]
+[ext_resource type="FontFile" uid="uid://bun3gm0am7kr" path="res://font_16.tres" id="3_kaa82"]
+[ext_resource type="FontFile" uid="uid://bidttf7u06fng" path="res://font_8.tres" id="4_kcci4"]
 
 [sub_resource type="Animation" id="Animation_go4u2"]
 length = 0.001
@@ -76,7 +76,7 @@ offset_right = 256.0
 offset_bottom = 143.0
 theme_override_fonts/font = ExtResource("4_kcci4")
 theme_override_font_sizes/font_size = 8
-text = "Click to continue"
+text = "Click to try again"
 horizontal_alignment = 1
 uppercase = true
 
@@ -84,3 +84,4 @@ uppercase = true
 libraries = {
 &"": SubResource("AnimationLibrary_go4u2")
 }
+autoplay = "blink"

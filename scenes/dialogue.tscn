@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5n38s1pb8pd2"]
+
+[ext_resource type="Script" uid="uid://cu0glbenydvl3" path="res://scripts/dialogue.gd" id="1_bfpow"]
+[ext_resource type="Texture2D" uid="uid://bpan8pu2xa1" path="res://graphics/rect.png" id="1_jwyou"]
+[ext_resource type="FontFile" uid="uid://dn58tg6ctf7br" path="res://font_8.tres" id="2_3n4vj"]
+[ext_resource type="Texture2D" uid="uid://b6td0kk3vwuvb" path="res://graphics/dither.png" id="2_fyky8"]
+
+[sub_resource type="Animation" id="Animation_go4u2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hngjj"]
+resource_name = "blink"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_go4u2"]
+_data = {
+&"RESET": SubResource("Animation_go4u2"),
+&"blink": SubResource("Animation_hngjj")
+}
+
+[node name="Dialogue" type="Node2D"]
+process_mode = 3
+z_index = 96
+z_as_relative = false
+position = Vector2(92, 4)
+script = ExtResource("1_bfpow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 95
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(-92, -4)
+texture = ExtResource("2_fyky8")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 192)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -88.0
+offset_right = 160.0
+offset_bottom = 40.0
+texture = ExtResource("1_jwyou")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Speaker" type="Label" parent="."]
+offset_left = -84.0
+offset_top = 4.0
+offset_right = -44.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_3n4vj")
+theme_override_font_sizes/font_size = 8
+text = "SPEAKER"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Dialog" type="Label" parent="."]
+offset_left = -38.0
+offset_top = 4.0
+offset_right = 156.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_3n4vj")
+theme_override_font_sizes/font_size = 8
+text = "The quick brown fox jumps over the lazy dog.
+ABCDEFGHIJKLMNOPQRSTUVWXYZ.
+This is some extra text."
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 40.0
+offset_top = 41.0
+offset_right = 160.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_3n4vj")
+theme_override_font_sizes/font_size = 8
+text = "Click to proceed"
+horizontal_alignment = 2
+autowrap_mode = 2
+max_lines_visible = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_go4u2")
+}
+autoplay = "blink"

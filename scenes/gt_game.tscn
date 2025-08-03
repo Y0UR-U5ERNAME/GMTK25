@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://byl4vam2e5v2r" path="res://scripts/gt_game.gd" id="1_g5b8b"]
 [ext_resource type="PackedScene" uid="uid://cwqc4ajwrt3ay" path="res://scenes/fb_player.tscn" id="1_mvmpu"]
 [ext_resource type="Texture2D" uid="uid://da8dm8mbssbk0" path="res://graphics/fb_bg.png" id="2_66f1o"]
-[ext_resource type="FontFile" uid="uid://bcwqw4e8lw385" path="res://font_8.tres" id="4_i3sqc"]
+[ext_resource type="FontFile" uid="uid://bqnud2m24sqm5" path="res://font_8.tres" id="4_i3sqc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g5b8b"]
 distance = -65.0
@@ -51,11 +51,13 @@ shape = SubResource("WorldBoundaryShape2D_g5b8b")
 shape = SubResource("WorldBoundaryShape2D_5on74")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 30.0
-offset_bottom = 5.0
+offset_left = 66.0
+offset_right = 96.0
+offset_bottom = 13.0
 theme_override_fonts/font = ExtResource("4_i3sqc")
 theme_override_font_sizes/font_size = 8
 text = "SCORE: 0
 HI: 0"
+horizontal_alignment = 2
 
 [connection signal="die" from="FBPlayer" to="." method="_on_fb_player_die"]

@@ -37,18 +37,7 @@ CHOSEN IDEA
 - bottom right ui: faulty button
 - will get bored of playing same game over and over?
 
-MVP
-implement shop
-- games (if have time)
--- better games increase energy gained, but use up battery faster
-- upgrades + microtransactions (daily, permanent, upgradeable)
--- energy drink - decrease energy lost from work (one time)
--- coffee maker - decrease energy lost from work (perm, but less than energy drink)
--- hearty breakfast - increase starting energy (one time)
--- longer battery life - increase battery life by 1 hours (perm, can be applied multiple times)
--- decrease game diff - make bar gaps wider (perm, can be applied multiple times)
--- flappy sticker - increase energy gained while gaming by a little
--- alarm? - sudden increase in energy when energy gets too low (one time per day)
+add different colors to font?
 
 JAM VERSION
 implement differences between days - use resources?
@@ -58,22 +47,15 @@ day 3 - 1.5 sec move, 5 sec work, increased faulty rate
 day 4 - 1.25 sec move, 4 sec work, increased faulty rate, introduce outages if applicable
 day 5 - 1 sec move, 3 sec work (implement boss)
 day x - repeat but with gradually shorter work time
-implement dialogue (starting dialogue, passing dialogue), dont start day until starting dialogue over
-implement main menu
-art
 sound
 
 EXTRA
 implement more pieces
 implement outages
+more games
+more upgrades
 
-
-DIALOGUE
-BOSS: Alright, JACK, welcome to your first day at Amir Toys Inc.!
-JACK: Right, so... how exactly does this work?
-BOSS: Eh, you'll figure it out in no time. All you'll have to do is build some toys from bits and parts!
-JACK: Well, that sounds pretty simple. How much am I getting paid again?
-BOSS: You'll be paid based on your performance. The conveyor belt will move automatically, I'll be busy
 
 KNOWN BUGS
 - when dragging a piece over a piece that is moving on the conveyor, held piece stays held but moves with the conveyor
+- pipe movement speed

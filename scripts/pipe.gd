@@ -10,4 +10,5 @@ func _process(delta: float) -> void:
 	if not passed and position.x < 12:
 		passed = true
 		gtg.score += 1
-		GlobalVariables.energy += atan(gtg.score / 5.) * 2/PI * 0.05
+		if Cursor.speed != -1:
+			GlobalVariables.energy += atan(gtg.score / 5.) * 2/PI * 0.05 * (1.05 if 1 in GlobalVariables.upgrades else 1)

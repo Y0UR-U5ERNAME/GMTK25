@@ -20,7 +20,6 @@ enum { # types of pieces
 	INNER_WHEEL,
 	WHEEL
 }
-const piece_values = [10, 10, 20]
 
 static func get_parts(type : int) -> Array[int]:
 	match type:
@@ -55,24 +54,24 @@ func _process(delta: float) -> void:
 			Cursor.held_piece = self
 		
 		if not is_held:
-			global_position.y = clamp(global_position.y, 80, 130)
+			global_position.y = clamp(global_position.y, 80, 138)
 		
 		if on_conveyor and not is_held and get_tree().current_scene.is_moving:
-			position.x += 100 * delta
+			position.x += 100 * (2./GlobalVariables.move_time) * delta
 			
-		if position.x > 300 and not is_held:
+		if position.x > 256+9 and not is_held:
 			# maybe make sound effect
 			payout()
 
 func payout():
 	if piece_type == GlobalVariables.target:
 		GlobalVariables.stats[0] += 1
-		GlobalVariables.stats[1] += piece_values[piece_type]
-		GlobalVariables.pay += piece_values[piece_type]
+		GlobalVariables.stats[1] += GlobalVariables.piece_values[piece_type]
+		GlobalVariables.pay += GlobalVariables.piece_values[piece_type]
 	else:
 		GlobalVariables.stats[2] += 1
-		GlobalVariables.stats[3] += piece_values[piece_type]
-		GlobalVariables.pay -= piece_values[piece_type]
+		GlobalVariables.stats[3] += GlobalVariables.piece_values[piece_type]
+		GlobalVariables.pay -= GlobalVariables.piece_values[piece_type]
 		#for i in get_children():
 		#	if i.is_class(self.get_class()): i.payout()
 	queue_free()
@@ -80,12 +79,12 @@ func payout():
 func payout_faulty():
 	if faulty:
 		GlobalVariables.stats[4] += 1
-		GlobalVariables.stats[5] += piece_values[piece_type] / 2
-		GlobalVariables.pay += piece_values[piece_type] / 2
+		GlobalVariables.stats[5] += GlobalVariables.piece_values[piece_type] / 2
+		GlobalVariables.pay += GlobalVariables.piece_values[piece_type] / 2
 	else:
 		GlobalVariables.stats[6] += 1
-		GlobalVariables.stats[7] += piece_values[piece_type] / 2
-		GlobalVariables.pay -= piece_values[piece_type] / 2
+		GlobalVariables.stats[7] += GlobalVariables.piece_values[piece_type] # not / 2 so that net value is negative
+		GlobalVariables.pay -= GlobalVariables.piece_values[piece_type]
 		#for i in get_children():
 		#	if i.is_class(self.get_class()): i.payout_faulty()
 	queue_free()

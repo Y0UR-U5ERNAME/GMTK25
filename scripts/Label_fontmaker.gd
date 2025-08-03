@@ -3,7 +3,6 @@ extends Label
 
 @export var img : Image
 @export var height : int = 8
-@export var id : String = ""
 
 func _ready():
 	#if not Engine.is_editor_hint(): return
@@ -34,4 +33,4 @@ func _ready():
 	ResourceSaver.save(font, "res://font_%d.tres" % height)
 	
 	add_theme_font_size_override("font_size", height)
-	add_theme_font_override("font", load("res://font_%d%s.tres" % [height, id]))#font)
+	add_theme_font_override("font", load("res://font_%d.tres" % height))#font)

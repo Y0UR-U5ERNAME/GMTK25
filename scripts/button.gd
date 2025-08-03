@@ -20,9 +20,9 @@ func _ready():
 
 func _process(_delta):
 	if not disabled:
-		var r := Rect2(global_position - 1.*texture.get_size()/Vector2(hframes, vframes)*scale/2, 1.*texture.get_size()/Vector2(hframes, vframes)*scale/2)
-		if r.has_point(Cursor.global_position - Vector2(7, 7)) or r.has_point(Cursor.global_position + Vector2(7, 7)):
-			# hover
+		var r := Rect2(global_position - 1.*texture.get_size()/Vector2(hframes, vframes)*scale/2, 1.*texture.get_size()/Vector2(hframes, vframes)*scale)
+		if r.has_point(Cursor.global_position):
+			Cursor.state = 2
 			if not is_pressed and Input.is_action_just_pressed("left_click"):
 				is_pressed = true
 			elif is_pressed and Input.is_action_just_released("left_click"):

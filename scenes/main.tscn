@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://cgaekbjcj5l7r"]
+
+[ext_resource type="Script" uid="uid://b6tritpinhx5r" path="res://scripts/main.gd" id="1_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://bte3w4njfiala" path="res://graphics/background.png" id="2_tefeu"]
+[ext_resource type="Texture2D" uid="uid://bnkpjyi018y30" path="res://graphics/conveyor.png" id="3_tipki"]
+[ext_resource type="Texture2D" uid="uid://bdmu1g65irvwg" path="res://graphics/title.png" id="4_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://duphw52d10pg3" path="res://graphics/playbutton.png" id="4_tipki"]
+[ext_resource type="Script" uid="uid://dpe72hg3l4dw8" path="res://scripts/button.gd" id="5_85g3d"]
+[ext_resource type="PackedScene" uid="uid://cnt2v2j6dpvtt" path="res://scenes/game_thing.tscn" id="7_85g3d"]
+[ext_resource type="Texture2D" uid="uid://dqndfyxn1wujq" path="res://graphics/quitbutton.png" id="8_85g3d"]
+[ext_resource type="FontFile" uid="uid://dn58tg6ctf7br" path="res://font_8.tres" id="8_tipki"]
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "dance"
+length = 1.1429
+loop_mode = 2
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1429),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_tefeu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
+_data = {
+&"RESET": SubResource("Animation_tefeu"),
+&"dance": SubResource("Animation_tbgi4")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_tbgi4")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(128, 96)
+texture = ExtResource("2_tefeu")
+
+[node name="Conveyor" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(128, 110)
+texture = ExtResource("3_tipki")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 80)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 118.0
+offset_top = 4.0
+offset_right = 252.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("8_tipki")
+theme_override_font_sizes/font_size = 8
+text = "GMTK Game Jam 2025 submission
+made by Yousurname
+Music by ultramarine"
+horizontal_alignment = 2
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(64, 64)
+texture = ExtResource("4_o6xl0")
+offset = Vector2(0, 10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
+libraries = {
+&"": SubResource("AnimationLibrary_o6xl0")
+}
+autoplay = "dance"
+
+[node name="PlayButton" type="Sprite2D" parent="."]
+position = Vector2(64, 144)
+texture = ExtResource("4_tipki")
+vframes = 2
+region_rect = Rect2(0, 0, 64, 24)
+script = ExtResource("5_85g3d")
+metadata/_custom_type_script = "uid://dpe72hg3l4dw8"
+
+[node name="QuitButton" type="Sprite2D" parent="."]
+position = Vector2(64, 168)
+texture = ExtResource("8_85g3d")
+vframes = 2
+region_rect = Rect2(0, 0, 64, 24)
+script = ExtResource("5_85g3d")
+metadata/_custom_type_script = "uid://dpe72hg3l4dw8"
+
+[node name="GameThing" parent="." instance=ExtResource("7_85g3d")]
+position = Vector2(192, 192)
+
+[connection signal="clicked" from="PlayButton" to="." method="_on_play_button_clicked"]
+[connection signal="clicked" from="QuitButton" to="." method="_on_quit_button_clicked"]

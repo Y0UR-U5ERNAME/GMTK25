@@ -23,6 +23,7 @@ var held_power := 0.0 # how long power button is held for
 
 func _ready():
 	pi.play()
+	$FBSticker.visible = 1 in GlobalVariables.upgrades
 
 func _on_toggle_clicked() -> void:
 	is_away = not is_away
@@ -50,5 +51,5 @@ func _process(delta: float) -> void:
 		held_power = 0
 	
 	# decrease battery
-	if on:
-		battery -= delta / 120
+	if on and Cursor.speed != -1:
+		battery -= delta / (240 * 3/8) * (1 + .125 * GlobalVariables.upgrades[2] if 2 in GlobalVariables.upgrades else 1)

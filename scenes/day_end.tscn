@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cs0gs5uu8ijau" path="res://scripts/day_end.gd" id="1_go4u2"]
 [ext_resource type="Texture2D" uid="uid://duv2bswrnil2i" path="res://graphics/endbg.png" id="1_hngjj"]
-[ext_resource type="FontFile" uid="uid://kgqkxa5qgfxa" path="res://font_16.tres" id="2_fhu8n"]
-[ext_resource type="FontFile" uid="uid://d0ucsw7i5hkmu" path="res://font_8.tres" id="3_hngjj"]
+[ext_resource type="FontFile" uid="uid://bun3gm0am7kr" path="res://font_16.tres" id="2_fhu8n"]
+[ext_resource type="FontFile" uid="uid://bidttf7u06fng" path="res://font_8.tres" id="3_hngjj"]
 
 [sub_resource type="Animation" id="Animation_go4u2"]
 length = 0.001

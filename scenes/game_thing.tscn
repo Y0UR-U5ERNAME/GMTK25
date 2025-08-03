@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnt2v2j6dpvtt"]
+[gd_scene load_steps=17 format=3 uid="uid://cnt2v2j6dpvtt"]
 
 [ext_resource type="Script" uid="uid://dyk3dcr6dhdv4" path="res://scripts/game_thing.gd" id="1_o2kkx"]
 [ext_resource type="Texture2D" uid="uid://cpin1ggrd84ss" path="res://graphics/gamething.png" id="1_t4hx5"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dghwv576frjr5" path="res://graphics/power_indicator.png" id="3_myjua"]
 [ext_resource type="Texture2D" uid="uid://cc2ipr1ljrshh" path="res://graphics/gttab.png" id="5_bdl0n"]
 [ext_resource type="Script" uid="uid://dpe72hg3l4dw8" path="res://scripts/button.gd" id="6_qefvn"]
-[ext_resource type="FontFile" uid="uid://bcwqw4e8lw385" path="res://font_8.tres" id="7_rcl55"]
+[ext_resource type="FontFile" uid="uid://dn58tg6ctf7br" path="res://font_8.tres" id="7_rcl55"]
+[ext_resource type="Texture2D" uid="uid://dej3tj5dysygu" path="res://graphics/fbsticker.png" id="9_7qq6t"]
 [ext_resource type="Texture2D" uid="uid://eknqk7rr0gle" path="res://graphics/powerbutton.png" id="9_ashhk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ashhk"]
@@ -80,7 +81,7 @@ animations = [{
 }]
 
 [node name="GameThing" type="Node2D"]
-z_index = 99
+z_index = 90
 z_as_relative = false
 script = ExtResource("1_o2kkx")
 
@@ -102,20 +103,21 @@ frame_progress = 0.991468
 [node name="Toggle" type="Sprite2D" parent="."]
 z_index = 10
 z_as_relative = false
-position = Vector2(-34, -6)
+position = Vector2(-29, -6)
 texture = ExtResource("5_bdl0n")
 vframes = 2
 script = ExtResource("6_qefvn")
 metadata/_custom_type_script = "uid://dpe72hg3l4dw8"
 
 [node name="Label" type="Label" parent="Toggle"]
-offset_left = -14.0
-offset_top = -3.0
-offset_right = 18.0
-offset_bottom = 2.0
+offset_left = -20.0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 3.0
 theme_override_fonts/font = ExtResource("7_rcl55")
 theme_override_font_sizes/font_size = 8
 text = "Show GT"
+horizontal_alignment = 1
 
 [node name="PowerButton" type="Sprite2D" parent="."]
 position = Vector2(44, 104)
@@ -136,5 +138,9 @@ handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(96, 72)
 render_target_update_mode = 0
+
+[node name="FBSticker" type="Sprite2D" parent="."]
+position = Vector2(-55, 27)
+texture = ExtResource("9_7qq6t")
 
 [connection signal="clicked" from="Toggle" to="." method="_on_toggle_clicked"]
