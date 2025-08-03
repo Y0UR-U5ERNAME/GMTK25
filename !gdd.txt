@@ -39,21 +39,11 @@ CHOSEN IDEA
 
 add different colors to font?
 
-JAM VERSION
-implement differences between days - use resources?
-day 1 - 2 sec move, 10 sec work, starting energy high, gets lower over days
-day 2 - 1.75 sec move, 7 sec work, introduce faulty parts
-day 3 - 1.5 sec move, 5 sec work, increased faulty rate
-day 4 - 1.25 sec move, 4 sec work, increased faulty rate, introduce outages if applicable
-day 5 - 1 sec move, 3 sec work (implement boss)
-day x - repeat but with gradually shorter work time
-sound
-
 EXTRA
 implement more pieces
-implement outages
 more games
 more upgrades
+aim from cursor to mouse
 
 
 KNOWN BUGS

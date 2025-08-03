@@ -9,9 +9,9 @@ enum {
 var upgrades = [
 	[0, "ENERGY DRINK\nDecreases energy loss from working the next day (-10%)", DAILY, 500],
 	[1, "SPINNY WHEEL STICKER\nIncreases energy gain from playing Spinny Wheel (+5%)", ONETIME, 300],
-	[2, "LONGER BATTERY LIFE\nIncreases GameThing battery life (+12.5%)", UPGRADEABLE, [1000, 2000, 5000, 10000]],
-	[3, "COFFEE MAKER\nDecreases energy loss from working (permanent) (-5%)", ONETIME, 2000],
-	[4, "BIG BREAKFAST\nIncreases starting energy the next day (+20%)", DAILY, 1500],
+	[2, "LONGER BATTERY LIFE\nIncreases GameThing battery life (+16.7%)", UPGRADEABLE, [1000, 2000, 5000, 10000]],
+	[3, "COFFEE MAKER\nDecreases energy loss from working (permanent) (-5%)", ONETIME, 1000],
+	[4, "BIG BREAKFAST\nIncreases starting energy the next day (+30%)", DAILY, 1500],
 	[5, "EASY PEASY (SPINNY WHEEL)\nIncreases gap between obstacles in Spinny Wheel (+8px)", UPGRADEABLE, [500, 1000, 2000]],
 	[6, "11 AM ALARM\nReceive a boost of energy at 11 AM the next day (+10%)", DAILY, 2000],
 	[7, "1 PM ALARM\nReceive a boost of energy at 1 PM the next day (+10%)", DAILY, 5000],
@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 	$Label2.text = "Page %d of %d" % [page + 1, num_pages]
 
 func _on_my_button_clicked() -> void:
-	Music.stream = preload("res://audio/assembly_line-006.mp3")
+	Music.stream = preload("res://audio/assembly_line-010.mp3")
 	Music.play()
 	GlobalVariables.day += 1
 	GlobalVariables.tm.change_scene_to_file("res://scenes/game_loop.tscn")

@@ -27,13 +27,17 @@ static func get_parts(type : int) -> Array[int]:
 	return [type]
 
 static func combine(piece1 : Piece, piece2 : Piece) -> void:
-	if piece1.faulty or piece2.faulty: return
+	if piece1.faulty or piece2.faulty:
+		GlobalVariables.play_sound(preload("res://audio/snap2.wav"))
+		return
 	if piece1.piece_type == INNER_WHEEL and piece2.piece_type == OUTER_WHEEL:
+		GlobalVariables.play_sound(preload("res://audio/snap.wav"))
 		piece1.reparent(piece2)
 		piece1.position = Vector2.ZERO
 		piece1.is_attached = true
 		piece2.piece_type = WHEEL
 	elif piece1.piece_type == OUTER_WHEEL and piece2.piece_type == INNER_WHEEL:
+		GlobalVariables.play_sound(preload("res://audio/snap.wav"))
 		piece2.reparent(piece1)
 		piece2.position = Vector2.ZERO
 		piece2.is_attached = true
@@ -50,6 +54,7 @@ func _process(delta: float) -> void:
 		outline.visible = self == Cursor.piece_touching
 		is_held = outline.visible and Input.is_action_pressed("left_click")
 		if is_held and Input.is_action_just_pressed("left_click"):
+			GlobalVariables.play_sound(preload("res://audio/btn_down.ogg"))
 			reparent(Cursor)
 			Cursor.held_piece = self
 		

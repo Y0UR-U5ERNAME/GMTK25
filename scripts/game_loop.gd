@@ -25,7 +25,7 @@ func _ready():
 	boost.visible = false
 	time = 0
 	$UI/Day.text = "DAY " + str(GlobalVariables.day)
-	ui_time.text = ["MON", "TUE", "WED", "THU", "FRI"][(GlobalVariables.day - 1) % 5] + " 9:00 AM"
+	ui_time.text = ["MON", "TUE", "WED", "THU", "FRI (BOSS)"][(GlobalVariables.day - 1) % 5] + " 9:00 AM"
 	$UI/Faulty.visible = GlobalVariables.faulty_rate != 0
 	$UI/Faulty/CollisionShape2D.disabled = GlobalVariables.faulty_rate == 0
 	is_paused = true
@@ -60,8 +60,8 @@ func _ready():
 				"You did pretty good for your first day, JACK! Hope you weren't gaming away simultaneously though...",
 				"Thanks, I guess...",
 				"I'll expect you to work even faster today then! In other news... we've discovered that a small percentage of our parts come out faulty.",
-				"Even though they look normal, faulty pieces don't connect to any other pieces. So I'm hoping you could help us identify them and move them over to the FAULTY section down there.",
-				"Alright, good luck today!"
+				"Even though they look normal, faulty parts don't connect to any other parts. When two parts don't connect, either one could be faulty.",
+				"So I'm hoping you could help us identify them and move them over to the FAULTY section down there. Alright, good luck today!"
 			],
 			["BOSS", "JACK", "BOSS", "BOSS", "BOSS"]
 		)
@@ -76,16 +76,18 @@ func _ready():
 		dialogue.switch(
 			[
 				"Hey, new guy...",
-				"The name's Jack.",
+				"The name's JACK.",
 				"New guy... ya know where them faulty parts end up?",
 				"Huh?",
 				"They're used to power The Machine...",
 				"You mean that thing that made us all into-",
-				"Shh... Be careful, else THEY will find out... Don't believe everything they say..."
+				"Shh... Be careful, else THEY will find out... Don't believe everything they say...",
+				"There's been some outages here lately... Hope ya'll still be able to do your work well...",
+				"(Luckily, I can still see my GameThing screen in the dark.)"
 			],
-			["COWORKER", "JACK", "COWORKER", "JACK", "COWORKER", "JACK", "COWORKER"]
+			["COWORKER", "JACK", "COWORKER", "JACK", "COWORKER", "JACK", "COWORKER", "COWORKER", "JACK"]
 		)
-	elif (GlobalVariables.day - 1) % 5 == 0:
+	elif GlobalVariables.day % 5 == 0:
 		dialogue.switch(
 			[
 				"Last day of the week! Hope I don't catch you slacking off today! If you do well, maybe you'll get a promotion!"
@@ -95,10 +97,21 @@ func _ready():
 	elif GlobalVariables.day == 6:
 		dialogue.switch(
 			[
-				"Hey, so... You were supposed to get a promotion and start working on new pieces but... Looks like those aren't ready yet.",
+				"Hey, so... You were supposed to get a promotion and start working on new pieces that use more parts but... Looks like those aren't ready yet.",
 				"So instead, I'll just increase your wage. (This will continue every week)"
 			],
 			["BOSS", "BOSS"]
+		)
+	elif GlobalVariables.day == 7:
+		dialogue.switch(
+			[
+				"Hey, Jeck...",
+				"JACK.",
+				"Jeck... Wanna know a secret?",
+				"What is it?",
+				"Not tellin' ya."
+			],
+			["COWORKER", "JACK", "COWORKER", "JACK", "COWORKER"]
 		)
 
 func _on_dialogue_finished() -> void:
@@ -120,7 +133,11 @@ func _process(delta: float) -> void:
 			GlobalVariables.tm.change_scene_to_file("res://scenes/fired.tscn", 11)
 		GlobalVariables.energy -= randf() * delta * 0.005 * (.9 if 0 in GlobalVariables.upgrades else 1)
 		GlobalVariables.since_last_energy_boost += delta
-		ui_time.text = ["MON", "TUE", "WED", "THU", "FRI"][(GlobalVariables.day - 1) % 5] + " " + to_time(time)
+		ui_time.text = ["MON", "TUE", "WED", "THU", "FRI (BOSS)"][(GlobalVariables.day - 1) % 5] + " " + to_time(time)
+		if GlobalVariables.day % 5 == 0 and $GameThing.position.y < 192-24 and $Boss.is_checking:
+			GlobalVariables.fired_message = "Thought you were sneaky with your GameThing out while I was checking on you?"
+			GlobalVariables.tm.change_scene_to_file("res://scenes/fired.tscn")
+			return
 		if time >= 240:
 			time = 240
 			is_paused = true
@@ -134,6 +151,7 @@ func _process(delta: float) -> void:
 		if to_next_phase <= 0:
 			if not is_moving:
 				spawn_pieces(Piece.WHEEL)
+				GlobalVariables.play_sound(preload("res://audio/whirr.ogg"), null, "SFX", (2./GlobalVariables.move_time))
 			is_moving = not is_moving
 			to_next_phase += GlobalVariables.move_time if is_moving else GlobalVariables.work_time
 		if is_moving:

@@ -57,4 +57,5 @@ func on_clicked():
 	else:
 		GlobalVariables.upgrades[id] = 1
 	level += 1
+	GlobalVariables.play_sound(preload("res://audio/kaching.wav"))
 	

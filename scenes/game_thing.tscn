@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dghwv576frjr5" path="res://graphics/power_indicator.png" id="3_myjua"]
 [ext_resource type="Texture2D" uid="uid://cc2ipr1ljrshh" path="res://graphics/gttab.png" id="5_bdl0n"]
 [ext_resource type="Script" uid="uid://dpe72hg3l4dw8" path="res://scripts/button.gd" id="6_qefvn"]
-[ext_resource type="FontFile" uid="uid://dn58tg6ctf7br" path="res://font_8.tres" id="7_rcl55"]
+[ext_resource type="FontFile" uid="uid://byb3xp5ytir68" path="res://font_8.tres" id="7_rcl55"]
 [ext_resource type="Texture2D" uid="uid://dej3tj5dysygu" path="res://graphics/fbsticker.png" id="9_7qq6t"]
 [ext_resource type="Texture2D" uid="uid://eknqk7rr0gle" path="res://graphics/powerbutton.png" id="9_ashhk"]
 
@@ -98,7 +98,6 @@ hframes = 2
 position = Vector2(16, 8)
 sprite_frames = SubResource("SpriteFrames_o7j8h")
 animation = &"off"
-frame_progress = 0.991468
 
 [node name="Toggle" type="Sprite2D" parent="."]
 z_index = 10

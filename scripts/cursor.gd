@@ -36,9 +36,10 @@ func _process(delta: float) -> void:
 		energy_loss += dist.length() * delta / 5000
 		energy_loss += (1./500 if held_piece else 0) * delta
 		GlobalVariables.energy -= energy_loss * (1 - (.1 if 0 in GlobalVariables.upgrades else 0) - (.05 if 3 in GlobalVariables.upgrades else 0))
-		speed = Vector2(256, 192).length() * 7 * GlobalVariables.energy * (1 - .8*2/PI * atan(GlobalVariables.since_last_energy_boost/20))
+		speed = Vector2(256, 192).length() * 7 * GlobalVariables.energy * (1 - .5*2/PI * atan(GlobalVariables.since_last_energy_boost/20))
 	
-	if not GlobalVariables.energy: return
+	if not GlobalVariables.energy:
+		return
 	
 	pieces_touching = pieces_touching.filter(func(x): return is_instance_valid(x) and not x.is_attached)
 	piece_touching = pieces_touching.reduce(func(a, b): return a if a.position.y > b.position.y else b) if pieces_touching else null
@@ -49,6 +50,7 @@ func _process(delta: float) -> void:
 		held_for = 0.0
 	
 	if held_piece and (Input.is_action_just_released("left_click") or GlobalVariables.energy < .25 and held_for >= GlobalVariables.energy * 4):
+		GlobalVariables.play_sound(preload("res://audio/btn_up.ogg"))
 		held_piece.reparent(get_tree().current_scene.get_node("Pieces"))
 		if piece_touching and piece_touching != held_piece:
 			Piece.combine(held_piece, piece_touching)

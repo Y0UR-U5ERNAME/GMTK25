@@ -9,10 +9,12 @@ func _physics_process(delta: float) -> void:
 	velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("ui_accept"):
 		velocity.y = JUMP_VELOCITY
+		GlobalVariables.play_sound(preload("res://audio/blip.wav"), null, "Game SFX")
 	velocity.x = 0
 
 	move_and_slide()
 	if get_slide_collision_count():
+		GlobalVariables.play_sound(preload("res://audio/die.wav"), null, "Game SFX")
 		die.emit()
 		velocity.x = 0
 	

@@ -2,6 +2,10 @@ extends Node2D
 
 var score := 0:
 	set(x):
+		if x > score:
+			GlobalVariables.play_sound(preload("res://audio/scoreup.wav"), null, "Game SFX")
+			if Cursor.speed != -1:
+				GlobalVariables.energy += atan(x / 5.) * 2/PI * 0.05 * (1.05 if 1 in GlobalVariables.upgrades else 1)
 		score = x
 		if x > GlobalVariables.hi_score:
 			GlobalVariables.hi_score = x

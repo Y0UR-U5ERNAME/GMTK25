@@ -1,4 +1,4 @@
-[gd_resource type="FontFile" load_steps=2 format=3 uid="uid://dn58tg6ctf7br"]
+[gd_resource type="FontFile" load_steps=2 format=3 uid="uid://dwjs34cg8ghfk"]
 
 [ext_resource type="Image" uid="uid://ukqvw01yfm6x" path="res://font-serif.png" id="1_b4jue"]
 
@@ -1136,3 +1136,28 @@ cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/glyphs/49/advance = Vector2(0, 0)
+cache/0/50/0/glyphs/49/offset = Vector2(0, 0)
+cache/0/50/0/glyphs/49/size = Vector2(0, 0)
+cache/0/50/0/glyphs/49/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/50/0/glyphs/49/texture_idx = -1
+cache/0/50/0/glyphs/50/advance = Vector2(0, 0)
+cache/0/50/0/glyphs/50/offset = Vector2(0, 0)
+cache/0/50/0/glyphs/50/size = Vector2(0, 0)
+cache/0/50/0/glyphs/50/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/50/0/glyphs/50/texture_idx = -1
+cache/0/50/0/glyphs/65/advance = Vector2(0, 0)
+cache/0/50/0/glyphs/65/offset = Vector2(0, 0)
+cache/0/50/0/glyphs/65/size = Vector2(0, 0)
+cache/0/50/0/glyphs/65/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/50/0/glyphs/65/texture_idx = -1
+cache/0/50/0/glyphs/98/advance = Vector2(0, 0)
+cache/0/50/0/glyphs/98/offset = Vector2(0, 0)
+cache/0/50/0/glyphs/98/size = Vector2(0, 0)
+cache/0/50/0/glyphs/98/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/50/0/glyphs/98/texture_idx = -1

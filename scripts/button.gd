@@ -7,8 +7,10 @@ signal clicked
 var is_pressed := false:
 	set(x):
 		is_pressed = x
-		if x: button_down.emit()
-		else: button_up.emit()
+		if x:
+			button_down.emit()
+		else:
+			button_up.emit()
 		frame_coords.y = int(is_pressed)
 var disabled := false:
 	set(x):
@@ -24,9 +26,11 @@ func _process(_delta):
 		if r.has_point(Cursor.global_position):
 			Cursor.state = 2
 			if not is_pressed and Input.is_action_just_pressed("left_click"):
+				GlobalVariables.play_sound(preload("res://audio/btn_down.ogg"))
 				is_pressed = true
 			elif is_pressed and Input.is_action_just_released("left_click"):
 				is_pressed = false
+				GlobalVariables.play_sound(preload("res://audio/btn_up.ogg"))
 				clicked.emit()
 		else:
 			is_pressed = false

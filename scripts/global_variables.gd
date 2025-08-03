@@ -42,6 +42,8 @@ var energy := 0.7:
 		elif Music.pitch_scale != 1: Music.pitch_scale = 1
 var stats := [0, 0, 0, 0, 0, 0, 0, 0]
 var since_last_energy_boost := 0.0
+var boss_times = []
+var outage_times = []
 
 func reset_day():
 	piece_values = base_piece_values.map(func(x): return x * ((GlobalVariables.day - 1) / 5 + 1))
@@ -51,9 +53,27 @@ func reset_day():
 	work_time = [10, 7, 5, 4, 3][day - 1] if day <= 5 else 20. / (day + 1)
 	faulty_rate = [0, .05, .07, .09, .1][day - 1] if day <= 5 else .1
 	target = Piece.WHEEL if day <= 5 else Piece.WHEEL
-	energy = [.7, .6, .5, .4, .3][(day - 1)%5] + (.2 if 4 in upgrades else 0)
+	energy = [.7, .6, .5, .4, .3][(day - 1)%5] + (.3 if 4 in upgrades else 0)
 	stats = [0, 0, 0, 0, 0, 0, 0, 0]
 	since_last_energy_boost = 0.0
+	
+	if day % 5 != 0:
+		boss_times = []
+	else:
+		boss_times = []
+		var pre := -15.0 # 8:30 AM
+		while pre <= 240 - 15: # 4:30 PM
+			pre += 30 + randf()*90 # 1 - 4 hours between each
+			boss_times.append(pre)
+	
+	if day >= 4:
+		outage_times = []
+		var pre := -15.0 # 8:30 AM
+		while pre <= 240 - 15: # 4:30 PM
+			pre += 60 + randf()*90 # 2 - 5 hours between each
+			outage_times.append(pre)
+	else:
+		outage_times = []
 
 const pieces = [
 	preload("res://scenes/outer_wheel.tscn"),
@@ -84,12 +104,13 @@ func load_save():
 	AudioServer.set_bus_volume_linear(0, save_data[2])
 	AudioServer.set_bus_volume_linear(1, save_data[3])
 
-func play_sound(stream: AudioStream, parent: Node = null):
+func play_sound(stream: AudioStream, parent: Node = null, bus = "SFX", pitch = 1.0):
 	var a = AudioStreamPlayer.new()
+	a.bus = bus
 	a.stream = stream
-	a.autoplay = true
-	a.bus = "SFX"
+	a.pitch_scale = pitch
 	a.process_mode = PROCESS_MODE_ALWAYS
-	if parent: parent.add_child.call_deferred(a)
-	else: add_child.call_deferred(a)
 	a.finished.connect(a.queue_free)
+	if parent: parent.add_child(a)
+	else: add_child(a)
+	a.play()

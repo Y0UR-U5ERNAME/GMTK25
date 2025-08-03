@@ -53,3 +53,17 @@ func _process(delta: float) -> void:
 	# decrease battery
 	if on and Cursor.speed != -1:
 		battery -= delta / (240 * 3/8) * (1 + .125 * GlobalVariables.upgrades[2] if 2 in GlobalVariables.upgrades else 1)
+	
+	AudioServer.set_bus_mute(3, is_away)
+	
+	if Cursor.speed != -1 and GlobalVariables.day >= 4:
+		if get_parent().get_node("Outage").is_out:
+			$Sprite2D.visible = false
+			$GTButton.visible = false
+			$PowerButton.visible = false
+			$FBSticker.visible = false
+		else:
+			$Sprite2D.visible = true
+			$GTButton.visible = true
+			$PowerButton.visible = true
+			$FBSticker.visible = 1 in GlobalVariables.upgrades

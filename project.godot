@@ -31,7 +31,6 @@ Cursor="*res://scenes/cursor.tscn"
 window/size/viewport_width=256
 window/size/viewport_height=192
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="uid://b1q15l0pilfn"
 
 [input]
 

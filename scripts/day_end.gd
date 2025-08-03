@@ -9,7 +9,7 @@ var progress := 0.0
 
 func _ready() -> void:
 	super()
-	Music.stream = preload("res://audio/shop-001.mp3")
+	Music.stream = preload("res://audio/shop-006.mp3")
 	Music.pitch_scale = 1
 	Music.play()
 	Cursor.speed = -1

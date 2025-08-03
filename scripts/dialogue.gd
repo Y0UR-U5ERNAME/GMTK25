@@ -20,11 +20,14 @@ func _process(delta):
 		visible = false
 		finished.emit()
 		return
-	progress += 30 * delta
 	dialog.visible_characters = int(progress)
 	if progress >= len(dialog.text) and not $Label.max_lines_visible:
 		$Label.max_lines_visible = 1
+	else:
+		progress += 30 * delta
+		#GlobalVariables.play_sound(preload("res://audio/voice.ogg"))
 	if Input.is_action_just_pressed("left_click"):
+		GlobalVariables.play_sound(preload("res://audio/btn_down.ogg"))
 		if progress >= len(dialog.text):
 			$Label.max_lines_visible = 0
 			textn += 1
